@@ -1,0 +1,71 @@
+INFO     scrapy.utils.log:log.py:146 Scrapy 2.5.1 started (bot: scrapybot)
+INFO     scrapy.utils.log:log.py:153 Versions: lxml 4.8.0.0, libxml2 2.9.13, cssselect 1.1.0, parsel 1.6.0, w3lib 1.22.0, Twisted 22.2.0, Python 3.9.6 (default, Oct 18 2022, 12:41:40) - [Clang 14.0.0 (clang-1400.0.29.202)], pyOpenSSL 22.0.0 (OpenSSL 1.1.1n  15 Mar 2022), cryptography 36.0.2, Platform macOS-13.1-arm64-arm-64bit
+INFO     scrapy.crawler:crawler.py:59 Overridden settings:
+{'HTTPCACHE_ENABLED': True, 'LOG_ENABLED': False, 'LOG_LEVEL': 'ERROR'}
+INFO     scrapy.extensions.telnet:telnet.py:55 Telnet Password: 71f222c8ccbd2a1e
+INFO     scrapy.middleware:middleware.py:45 Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.feedexport.FeedExporter',
+ 'scrapy.extensions.logstats.LogStats']
+INFO     scrapy.middleware:middleware.py:45 Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats',
+ 'scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware']
+INFO     scrapy.middleware:middleware.py:45 Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+INFO     scrapy.middleware:middleware.py:45 Enabled item pipelines:
+['pep_parse.pipelines.PepParsePipeline']
+INFO     scrapy.core.engine:engine.py:272 Spider opened
+INFO     scrapy.extensions.logstats:logstats.py:48 Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+INFO     scrapy.extensions.telnet:telnet.py:67 Telnet console listening on 127.0.0.1:6026
+INFO     scrapy.core.engine:engine.py:307 Closing spider (finished)
+ERROR    scrapy.core.engine:engine.py:315 Scraper close failure
+Traceback (most recent call last):
+  File "/Users/staszatusevckij/Desktop/Dev/scrapy_parser_pep-main/venv/lib/python3.9/site-packages/twisted/internet/defer.py", line 857, in _runCallbacks
+    current.result = callback(  # type: ignore[misc]
+  File "/Users/staszatusevckij/Desktop/Dev/scrapy_parser_pep-main/pep_parse/pipelines.py", line 20, in close_spider
+    with open(BASE_DIR, mode='w', encoding='utf-8') as f:
+IsADirectoryError: [Errno 21] Is a directory: 'tests/_tmp'
+INFO     scrapy.extensions.feedexport:feedexport.py:337 Stored csv feed (605 items) in: tests/_tmp/results/pep_2023-02-25T09-56-25.csv
+INFO     scrapy.statscollectors:statscollectors.py:46 Dumping Scrapy stats:
+{'downloader/request_bytes': 313000,
+ 'downloader/request_count': 1211,
+ 'downloader/request_method_count/GET': 1211,
+ 'downloader/response_bytes': 7137947,
+ 'downloader/response_count': 1211,
+ 'downloader/response_status_count/200': 606,
+ 'downloader/response_status_count/301': 605,
+ 'elapsed_time_seconds': 2.472867,
+ 'feedexport/success_count/FileFeedStorage': 1,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2023, 2, 25, 9, 56, 27, 498378),
+ 'httpcache/hit': 1211,
+ 'httpcompression/response_bytes': 27598762,
+ 'httpcompression/response_count': 606,
+ 'item_scraped_count': 605,
+ 'log_count/ERROR': 1,
+ 'memusage/max': 59113472,
+ 'memusage/startup': 59113472,
+ 'request_depth_max': 1,
+ 'response_received_count': 606,
+ 'scheduler/dequeued': 1211,
+ 'scheduler/dequeued/memory': 1211,
+ 'scheduler/enqueued': 1211,
+ 'scheduler/enqueued/memory': 1211,
+ 'start_time': datetime.datetime(2023, 2, 25, 9, 56, 25, 25511)}
+INFO     scrapy.core.engine:engine.py:338 Spider closed (finished)
