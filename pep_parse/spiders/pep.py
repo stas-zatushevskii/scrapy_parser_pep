@@ -9,7 +9,6 @@ class PepSpider(scrapy.Spider):
     allowed_domains = ['peps.python.org']
     start_urls = ['https://peps.python.org/']
 
-
     def parse(self, response):
         href = []
         for tr in response.css('a.pep::attr(href)').getall():
@@ -19,15 +18,14 @@ class PepSpider(scrapy.Spider):
             result = 'https://peps.python.org/' + link
             yield response.follow(result, callback=self.parse_pep)
 
-
     def parse_pep(self, response):
         words = response.css('h1.page-title::text').get()
         word = words.split(' – ')
 
         data = {
-                'number': re.findall(r'\d+', word[0]),
-                'name': word[-1],
-                'status': response.css(
-                    'dt:contains("Status") + dd').css('abbr::text').get()
-            }
+            'number': re.findall(r'\d+', word[0]),
+            'name': word[-1],
+            'status': response.css(
+                'dt:contains("Status") + dd').css('abbr::text').get()
+        }
         yield PepParseItem(data)

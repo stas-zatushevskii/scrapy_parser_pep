@@ -18,7 +18,7 @@ FEEDS = {
 BASE_DIR = pathlib.Path(__file__).parents[1]
 RESULTS = 'results'
 FILE_NAME = (f"status_summary_"
-            + f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.csv")
+             + f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.csv")
 
 ITEM_PIPELINES = {
     'pep_parse.pipelines.PepParsePipeline': 300,
