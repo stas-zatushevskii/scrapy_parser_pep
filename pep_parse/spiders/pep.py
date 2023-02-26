@@ -1,5 +1,6 @@
 import scrapy
 import re
+from urllib.parse import urljoin
 
 from pep_parse.items import PepParseItem
 
@@ -7,7 +8,7 @@ from pep_parse.items import PepParseItem
 class PepSpider(scrapy.Spider):
     name = 'pep'
     allowed_domains = ['peps.python.org']
-    start_urls = ['https://peps.python.org/']
+    start_urls = [f'https://{allowed_domains[0]}/']
 
     def parse(self, response):
         href = []
@@ -15,7 +16,7 @@ class PepSpider(scrapy.Spider):
             if tr not in href:
                 href.append(tr)
         for link in href[1:-2]:
-            result = 'https://peps.python.org/' + link
+            result = response.urljoin(link+'/')
             yield response.follow(result, callback=self.parse_pep)
 
     def parse_pep(self, response):
